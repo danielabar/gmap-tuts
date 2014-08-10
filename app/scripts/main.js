@@ -10,57 +10,21 @@
     zoom: 10
   };
 
-  var renderMap = function(options) {
-    map = new google.maps.Map(element, options);
+  var init = function() {
+    registerHandlers();
+    renderMap(defaultOptions);
   };
 
   var registerHandlers = function() {
-    $('#setDefaultOptions').on('click', function(e) {
-      renderMap(defaultOptions);
-      e.preventDefault();
-    });
-    $('#removeUIControls').on('click', function(e) {
-      var options = $.extend({}, defaultOptions, {disableDefaultUI: true});
-      renderMap(options);
-      e.preventDefault();
-    });
-    $('#disableScrollZoom').on('click', function(e) {
-      var options = $.extend({}, defaultOptions, {scrollwheel: false});
-      renderMap(options);
-      e.preventDefault();
-    });
-    $('#disableDrag').on('click', function(e) {
-      var options = $.extend({}, defaultOptions, {draggable: false});
-      renderMap(options);
-      e.preventDefault();
-    });
-    $('#mapTypeHybrid').on('click', function(e) {
-      var options = $.extend({}, defaultOptions, {mapTypeId: google.maps.MapTypeId.HYBRID});
-      renderMap(options);
-      e.preventDefault();
-    });
+    $('#setDefaultOptions').on('click', changeMapOptions.bind(null));
+    $('#removeUIControls').on('click', changeMapOptions.bind({disableDefaultUI: true}));
+    $('#disableScrollZoom').on('click', changeMapOptions.bind({scrollwheel: false}));
+    $('#disableDrag').on('click', changeMapOptions.bind({draggable: false}));
+    $('#mapTypeHybrid').on('click', changeMapOptions.bind({mapTypeId: google.maps.MapTypeId.HYBRID}));
     $('#mapTypeSatellite').on('click', changeMapOptions.bind({mapTypeId: google.maps.MapTypeId.SATELLITE}));
-
-    $('#minMaxZoom').on('click', function(e) {
-      var options = $.extend({}, defaultOptions, {minZoom: 9, maxZoom: 11});
-      renderMap(options);
-      e.preventDefault();
-    });
-    $('#controlBottomLeftSmall').on('click', function(e) {
-      var options = $.extend({}, defaultOptions,
-        {zoomControlOptions:
-          {position: google.maps.ControlPosition.BOTTOM_LEFT,
-            style: google.maps.ZoomControlStyle.SMALL
-          }
-        });
-      renderMap(options);
-      e.preventDefault();
-    });
-    $('#panControlBottomLeft').on('click', function(e) {
-      var options = $.extend({}, defaultOptions, {panControlOptions: {position: google.maps.ControlPosition.BOTTOM_LEFT}});
-      renderMap(options);
-      e.preventDefault();
-    });
+    $('#minMaxZoom').on('click', changeMapOptions.bind({minZoom: 9, maxZoom: 11}));
+    $('#controlBottomLeftSmall').on('click', changeMapOptions.bind({zoomControlOptions: {position: google.maps.ControlPosition.BOTTOM_LEFT, style: google.maps.ZoomControlStyle.SMALL } }));
+    $('#panControlBottomLeft').on('click', changeMapOptions.bind({panControlOptions: {position: google.maps.ControlPosition.BOTTOM_LEFT} }));
   };
 
   var changeMapOptions = function(e) {
@@ -69,9 +33,8 @@
     e.preventDefault();
   };
 
-  var init = function() {
-    registerHandlers();
-    renderMap(defaultOptions);
+  var renderMap = function(options) {
+    map = new google.maps.Map(element, options);
   };
 
   init();
