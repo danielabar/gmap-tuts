@@ -10,14 +10,14 @@
 
   var registerHandlers = function() {
     $('#setDefaultOptions').on('click', changeMapOptions.bind(null));
-    $('#removeUIControls').on('click', changeMapOptions.bind({disableDefaultUI: true}));
-    $('#disableScrollZoom').on('click', changeMapOptions.bind({scrollwheel: false}));
-    $('#disableDrag').on('click', changeMapOptions.bind({draggable: false}));
-    $('#mapTypeHybrid').on('click', changeMapOptions.bind({mapTypeId: google.maps.MapTypeId.HYBRID}));
-    $('#mapTypeSatellite').on('click', changeMapOptions.bind({mapTypeId: google.maps.MapTypeId.SATELLITE}));
-    $('#minMaxZoom').on('click', changeMapOptions.bind({minZoom: 9, maxZoom: 11}));
-    $('#controlBottomLeftSmall').on('click', changeMapOptions.bind({zoomControlOptions: {position: google.maps.ControlPosition.BOTTOM_LEFT, style: google.maps.ZoomControlStyle.SMALL } }));
-    $('#panControlBottomLeft').on('click', changeMapOptions.bind({panControlOptions: {position: google.maps.ControlPosition.BOTTOM_LEFT} }));
+    $('#removeUIControls').on('click', changeMapOptions.bind(mapster.DISABLE_DEFAULT_UI));
+    $('#disableScrollZoom').on('click', changeMapOptions.bind(mapster.DISABLE_SCROLL_ZOOM));
+    $('#disableDrag').on('click', changeMapOptions.bind(mapster.DISABLE_DRAG));
+    $('#mapTypeHybrid').on('click', changeMapOptions.bind(mapster.MAP_TYPE_HYBRID));
+    $('#mapTypeSatellite').on('click', changeMapOptions.bind(mapster.MAP_TYPE_SATELLITE));
+    $('#minMaxZoom').on('click', changeMapOptions.bind(mapster.MIN_MAX_ZOOM));
+    $('#controlBottomLeftSmall').on('click', changeMapOptions.bind(mapster.CONTROL_BOTTOM_LEFT_SMALL));
+    $('#panControlBottomLeft').on('click', changeMapOptions.bind(mapster.PAN_CONTROL_BOTTOM_LEFT));
   };
 
   var changeMapOptions = function(e) {
