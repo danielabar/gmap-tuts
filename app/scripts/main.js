@@ -1,4 +1,4 @@
-(function(window, google) {
+(function(window, google, $) {
 
   var element = document.getElementById('map-canvas');
   var map;
@@ -29,6 +29,41 @@
       renderMap(options);
       e.preventDefault();
     });
+    $('#disableDrag').on('click', function(e) {
+      var options = $.extend({}, defaultOptions, {draggable: false});
+      renderMap(options);
+      e.preventDefault();
+    });
+    $('#mapTypeHybrid').on('click', function(e) {
+      var options = $.extend({}, defaultOptions, {mapTypeId: google.maps.MapTypeId.HYBRID});
+      renderMap(options);
+      e.preventDefault();
+    });
+    $('#mapTypeSatellite').on('click', function(e) {
+      var options = $.extend({}, defaultOptions, {mapTypeId: google.maps.MapTypeId.SATELLITE});
+      renderMap(options);
+      e.preventDefault();
+    });
+    $('#minMaxZoom').on('click', function(e) {
+      var options = $.extend({}, defaultOptions, {minZoom: 9, maxZoom: 11});
+      renderMap(options);
+      e.preventDefault();
+    });
+    $('#controlBottomLeftSmall').on('click', function(e) {
+      var options = $.extend({}, defaultOptions,
+        {zoomControlOptions:
+          {position: google.maps.ControlPosition.BOTTOM_LEFT,
+            style: google.maps.ZoomControlStyle.SMALL
+          }
+        });
+      renderMap(options);
+      e.preventDefault();
+    });
+    $('#panControlBottomLeft').on('click', function(e) {
+      var options = $.extend({}, defaultOptions, {panControlOptions: {position: google.maps.ControlPosition.BOTTOM_LEFT}});
+      renderMap(options);
+      e.preventDefault();
+    });
   };
 
   var init = function() {
@@ -38,4 +73,4 @@
 
   init();
 
-}(window, google));
+}(window, google, jQuery));
