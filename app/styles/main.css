@@ -12,6 +12,7 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /*
@@ -26,6 +27,31 @@ nav {
   float: right;
 }
 
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #414244;
+}
+
+nav a:hover, .active {
+  color: #F9F598;
+}
+
+nav ul li {
+  line-height: 3em;
+  border: 1px solid #F3C954;
+  padding-left: 20px;
+  background: #92B7FB;
+}
+
+nav ul li:hover, .active {
+  background: #A6A595;
+}
 
 /*
 *******************************

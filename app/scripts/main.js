@@ -24,6 +24,11 @@
       renderMap(options);
       e.preventDefault();
     });
+    $('#disableScrollZoom').on('click', function(e) {
+      var options = $.extend({}, defaultOptions, {scrollwheel: false});
+      renderMap(options);
+      e.preventDefault();
+    });
   };
 
   var init = function() {
