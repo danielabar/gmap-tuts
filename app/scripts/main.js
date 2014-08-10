@@ -2,14 +2,21 @@
 
   var element = document.getElementById('map-canvas');
   var map;
+  var INITIAL_ZOOM = 18;
 
   var init = function() {
+    createMap(mapster.DEFAULT_OPTIONS);
     registerHandlers();
-    renderMap(mapster.DEFAULT_OPTIONS);
+  };
+
+  var createMap = function(options) {
+    map = mapster.create(element, options);
+    map.zoom(INITIAL_ZOOM);
+    updateInfo(map);
   };
 
   var registerHandlers = function() {
-    $('#setDefaultOptions').on('click', changeMapOptions.bind(null));
+    $('#setDefaultOptions').on('click', reset);
     $('#removeUIControls').on('click', changeMapOptions.bind(mapster.DISABLE_DEFAULT_UI));
     $('#disableScrollZoom').on('click', changeMapOptions.bind(mapster.DISABLE_SCROLL_ZOOM));
     $('#disableDrag').on('click', changeMapOptions.bind(mapster.DISABLE_DRAG));
@@ -20,14 +27,20 @@
     $('#panControlBottomLeft').on('click', changeMapOptions.bind(mapster.PAN_CONTROL_BOTTOM_LEFT));
   };
 
-  var changeMapOptions = function(e) {
-    var options = $.extend({}, mapster.DEFAULT_OPTIONS, this);
-    renderMap(options);
+  var reset = function(e) {
+    createMap(mapster.DEFAULT_OPTIONS);
     e.preventDefault();
   };
 
-  var renderMap = function(options) {
-    map = new google.maps.Map(element, options);
+  var changeMapOptions = function(e) {
+    var options = $.extend({}, mapster.DEFAULT_OPTIONS, this);
+    map.gMap.setOptions(options);
+    updateInfo(map);
+    e.preventDefault();
+  };
+
+  var updateInfo = function(map) {
+    $('#zoomValue').text(map.zoom());
   };
 
   init();

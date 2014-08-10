@@ -1,11 +1,24 @@
 (function(window, google, mapster) {
 
   mapster.DEFAULT_OPTIONS = {
+    zoom: 10,
+    minZoom: null,
+    maxZoom: null,
+    disableDefaultUI: false,
+    scrollWheel: true,
+    draggable: true,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: {
       lat: 37.791350,
       lng: -122.435883
     },
-    zoom: 10
+    zoomControlOptions: {
+      position: google.maps.ControlPosition.TOP_LEFT,
+      style: google.maps.ZoomControlStyle.DEFAULT
+    },
+    panControlOptions: {
+      position: google.maps.ControlPosition.TOP_LEFT
+    }
   };
 
   mapster.DISABLE_DEFAULT_UI = {
