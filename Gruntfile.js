@@ -100,7 +100,8 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     base: '<%= config.dist %>',
-                    livereload: false
+                    livereload: false,
+                    port: 9002
                 }
             }
         },
@@ -310,6 +311,17 @@ module.exports = function (grunt) {
                 'imagemin',
                 'svgmin'
             ]
+        },
+
+        // Deploy to github
+        'gh-pages': {
+          dist: {
+            options: {
+              base: 'dist',
+              message: 'Deployed by grunt gh-pages'
+            },
+            src: '**/*'
+          }
         }
     });
 
@@ -367,4 +379,7 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
+
+    grunt.registerTask('preview', ['build', 'connect:dist:keepalive']);
+    grunt.registerTask('deploy', ['build', 'gh-pages:dist']);
 };
