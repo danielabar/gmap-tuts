@@ -1,1 +1,0 @@
-!function(a,b){{var c={center:{lat:37.79135,lng:-122.435883},zoom:10},d=document.getElementById("map-canvas");new b.maps.Map(d,c)}}(window,google);
