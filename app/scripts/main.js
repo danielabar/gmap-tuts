@@ -39,11 +39,8 @@
       renderMap(options);
       e.preventDefault();
     });
-    $('#mapTypeSatellite').on('click', function(e) {
-      var options = $.extend({}, defaultOptions, {mapTypeId: google.maps.MapTypeId.SATELLITE});
-      renderMap(options);
-      e.preventDefault();
-    });
+    $('#mapTypeSatellite').on('click', changeMapOptions.bind({mapTypeId: google.maps.MapTypeId.SATELLITE}));
+
     $('#minMaxZoom').on('click', function(e) {
       var options = $.extend({}, defaultOptions, {minZoom: 9, maxZoom: 11});
       renderMap(options);
@@ -64,6 +61,12 @@
       renderMap(options);
       e.preventDefault();
     });
+  };
+
+  var changeMapOptions = function(e) {
+    var options = $.extend({}, defaultOptions, this);
+    renderMap(options);
+    e.preventDefault();
   };
 
   var init = function() {
