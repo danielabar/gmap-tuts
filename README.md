@@ -2,6 +2,8 @@
 
 > Learning Google Maps API with TutsPlus course [Custom Interactive Maps With the Google Maps API](https://courses.tutsplus.com/courses/custom-interactive-maps-with-the-google-maps-api)
 
+[Google Maps API Docs](https://developers.google.com/maps/documentation/javascript/tutorial)
+
 ## Setting Up a Key
 
 Make sure you're signed in to your Google account.

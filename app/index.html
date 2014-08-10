@@ -6,11 +6,6 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <link rel="shortcut icon" href="/favicon.ico">
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <!-- build:css styles/vendor.css -->
-  <!-- bower:css -->
-  <!-- endbower -->
-  <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
@@ -18,7 +13,22 @@
 <body>
 
   <div id="map-canvas"></div>
+  <nav>
+    <ul>
+      <a id="setDefaultOptions" href="#"><li>Default Options</li></a>
+      <a id="removeUIControls" href="#"><li>Remove UI Controls</li></a>
+    </ul>
+  </nav>
+
+  <!-- Google Maps JavaScript API -->
   <script src="https://maps.googleapis.com/maps/api/js?sensor=false"> </script>
+
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="../bower_components/jquery/dist/jquery.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
   <!-- build:js({app,.tmp}) scripts/main.js -->
   <script src="scripts/main.js"></script>
   <!-- endbuild -->
