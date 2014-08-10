@@ -73,6 +73,7 @@ nav ul li:hover, .active {
   background: #EFEFD9;
   color: #373B3F;
   box-shadow: 10px 10px 5px #888888;
+  font-weight: 300;
 }
 
 

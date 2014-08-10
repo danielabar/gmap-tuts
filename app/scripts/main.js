@@ -12,7 +12,17 @@
   var createMap = function(options) {
     map = mapster.create(element, options);
     map.zoom(INITIAL_ZOOM);
+    map.registerHandler(displayLatLong);
     updateInfo(map);
+  };
+
+  var displayLatLong = function(latLng) {
+    $('#latValue').text(roundValue(latLng.lat));
+    $('#lngValue').text(roundValue(latLng.lng));
+  };
+
+  var roundValue = function(val) {
+    return Math.round(val * 10000) / 10000;
   };
 
   var registerHandlers = function() {
@@ -34,7 +44,6 @@
 
   var changeMapOptions = function(e) {
     var options = $.extend({}, mapster.DEFAULT_OPTIONS, this);
-    // map.gMap.setOptions(options);
     map.setOpts(options);
     updateInfo(map);
     e.preventDefault();

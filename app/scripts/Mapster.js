@@ -21,6 +21,14 @@
         } else {
           return this.gMap.getZoom();
         }
+      },
+      registerHandler: function(callback) {
+        google.maps.event.addListener(this.gMap, 'click', function(e) {
+          callback({
+            lat: e.latLng.lat(),
+            lng: e.latLng.lng()
+          });
+        });
       }
     };
 
