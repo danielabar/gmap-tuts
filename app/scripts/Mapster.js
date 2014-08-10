@@ -22,12 +22,21 @@
           return this.gMap.getZoom();
         }
       },
+      // My attempt at click handler
       registerHandler: function(callback) {
         google.maps.event.addListener(this.gMap, 'click', function(e) {
           callback({
             lat: e.latLng.lat(),
             lng: e.latLng.lng()
           });
+        });
+      },
+      // Course solution for event handling
+      // By conention, underscore means private
+      _on: function(event, callback) {
+        var self = this;
+        google.maps.event.addListener(this.gMap, event, function(e) {
+          callback.call(self, e);
         });
       }
     };

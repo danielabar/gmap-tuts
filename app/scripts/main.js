@@ -13,6 +13,11 @@
     map = mapster.create(element, options);
     map.zoom(INITIAL_ZOOM);
     map.registerHandler(displayLatLong);
+    map._on('dragend', function(e) {
+      console.log('dragend');
+      console.dir(e);
+      console.dir(this);
+    });
     updateInfo(map);
   };
 
