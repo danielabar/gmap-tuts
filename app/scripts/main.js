@@ -1,18 +1,11 @@
-(function(window, google, $) {
+(function(window, google, $, mapster) {
 
   var element = document.getElementById('map-canvas');
   var map;
-  var defaultOptions = {
-    center: {
-      lat: 37.791350,
-      lng: -122.435883
-    },
-    zoom: 10
-  };
 
   var init = function() {
     registerHandlers();
-    renderMap(defaultOptions);
+    renderMap(mapster.DEFAULT_OPTIONS);
   };
 
   var registerHandlers = function() {
@@ -28,7 +21,7 @@
   };
 
   var changeMapOptions = function(e) {
-    var options = $.extend({}, defaultOptions, this);
+    var options = $.extend({}, mapster.DEFAULT_OPTIONS, this);
     renderMap(options);
     e.preventDefault();
   };
@@ -39,4 +32,4 @@
 
   init();
 
-}(window, google, jQuery));
+}(window, google, jQuery, window.Mapster || (window.Mapster = {})));
