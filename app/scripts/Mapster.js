@@ -10,6 +10,11 @@
 
     // Any functions that should be attached to all instances of the object are defined on the prototype
     Mapster.prototype = {
+      setOpts: function(opts) {
+        if (opts) {
+          this.gMap.setOptions(opts);
+        }
+      },
       zoom: function(level) {
         if (level) {
           this.gMap.setZoom(level);

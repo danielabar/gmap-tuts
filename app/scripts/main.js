@@ -1,4 +1,4 @@
-(function(window, google, $, mapster) {
+(function(window, $, mapster) {
 
   var element = document.getElementById('map-canvas');
   var map;
@@ -34,7 +34,8 @@
 
   var changeMapOptions = function(e) {
     var options = $.extend({}, mapster.DEFAULT_OPTIONS, this);
-    map.gMap.setOptions(options);
+    // map.gMap.setOptions(options);
+    map.setOpts(options);
     updateInfo(map);
     e.preventDefault();
   };
@@ -45,4 +46,4 @@
 
   init();
 
-}(window, google, jQuery, window.Mapster || (window.Mapster = {})));
+}(window, jQuery, window.Mapster || (window.Mapster = {})));
