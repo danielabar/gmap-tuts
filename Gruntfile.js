@@ -175,9 +175,9 @@ module.exports = function (grunt) {
                     src: [
                         '<%= config.dist %>/scripts/{,*/}*.js',
                         '<%= config.dist %>/styles/{,*/}*.css',
-                        '<%= config.dist %>/images/{,*/}*.*',
+                        '<%= config.dist %>/images/{,*/}*.{gif,jpeg,jpg}',
                         '<%= config.dist %>/styles/fonts/{,*/}*.*',
-                        '<%= config.dist %>/*.{ico,png}'
+                        '<%= config.dist %>/*.{ico}'
                     ]
                 }
             }
@@ -208,7 +208,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= config.app %>/images',
-                    src: '{,*/}*.{gif,jpeg,jpg,png}',
+                    src: '{,*/}*.{gif,jpeg,jpg}',
                     dest: '<%= config.dist %>/images'
                 }]
             }
@@ -288,6 +288,17 @@ module.exports = function (grunt) {
                         'styles/fonts/{,*/}*.*'
                     ]
                 }]
+            },
+            pngimg: {
+              files: [{
+                expand: true,
+                dot: true,
+                cwd: '<%= config.app %>/images',
+                dest: '<%= config.dist %>/images',
+                src: [
+                  '*.png'
+                ]
+              }]
             },
             styles: {
                 expand: true,
@@ -370,6 +381,7 @@ module.exports = function (grunt) {
         'uglify',
         'copy:dist',
         'rev',
+        'copy:pngimg',
         'usemin',
         'htmlmin'
     ]);

@@ -43,3 +43,9 @@ Then reference the script with custom code to define and load a custom map
   ```javascript
   <script src="scripts/main.js"></script>
   ```
+
+## Map Markers
+
+Must provide a position, and a map to display on. Can also customize the icon by specifying a url to the icon image.
+
+Custom map icons can be found [here](http://mapicons.nicolasmollet.com/)

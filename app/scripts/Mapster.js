@@ -32,7 +32,7 @@
         });
       },
       // Course solution for event handling
-      // By conention, underscore means private
+      // By convention, underscore means private
       _on: function(event, callback) {
         var self = this;
         google.maps.event.addListener(this.gMap, event, function(e) {
