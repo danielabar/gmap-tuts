@@ -29,7 +29,7 @@
         lng: -122.435883
       },
       map: map.gMap,
-      icon: '/images/giraffe.png'
+      icon: 'images/giraffe.png'
     });
   };
 
