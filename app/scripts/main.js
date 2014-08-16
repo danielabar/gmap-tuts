@@ -19,18 +19,12 @@
       console.dir(this);
     });
     updateInfo(map);
-    addMarker();
+    addMarkers();
   };
 
-  var addMarker = function() {
-    var marker = new google.maps.Marker({
-      position: {
-        lat: 37.791350,
-        lng: -122.435883
-      },
-      map: map.gMap,
-      icon: 'images/giraffe.png'
-    });
+  var addMarkers = function() {
+    map.addMarker(37.7916 , -122.4357, false);
+    map.addMarker(37.791350, -122.435883, true, 'images/giraffe.png');
   };
 
   var displayLatLong = function(latLng) {

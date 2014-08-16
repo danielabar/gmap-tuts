@@ -38,6 +38,23 @@
         google.maps.event.addListener(this.gMap, event, function(e) {
           callback.call(self, e);
         });
+      },
+      addMarker: function(lat, lng, draggable, icon) {
+        this._createMarker(lat, lng, draggable, icon);
+      },
+      _createMarker: function(lat, lng, draggable, icon) {
+        var opts = {
+          position: {
+            lat: lat,
+            lng: lng
+          },
+          draggable: draggable,
+          map: this.gMap
+        };
+        if (icon) {
+          opts.icon = icon;
+        }
+        return new google.maps.Marker(opts);
       }
     };
 
