@@ -139,3 +139,25 @@ _A marker is assigned to a map, whereas a map is not assigned a marker._
 Separate out marker organization logic from core map functions, _single responsibility prinicple_.
 
 For this project, the [List](app/scripts/List.js) module is created to manage any collection, including map markers.
+
+## Marker Clustering
+
+Several markers in small area (especially as user zooms out) will overlap each ohter.
+This can be fixed with clustering.
+
+Clustering is not part of google maps by default, an extra library must be included.
+
+Additional utility libraries available [here](https://code.google.com/p/google-maps-utility-library-v3/wiki/Libraries)
+
+[Map Clusterer](http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/)
+
+Sample usage
+
+  ```javascript
+  // constructor takes a map and array of markers (could be empty)
+  var mapClusterer = new MarkerClusterer(map, markers);
+  var marker = ... // code to create a marker
+  markerClusterer.addMarker(marker);
+  ```
+
+Cluster color can be modified to reflect density.

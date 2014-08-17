@@ -22,6 +22,7 @@
     "globals" : {
       "google"     : false,
       "List"       : false,
+      "MarkerClusterer": false,
       /* REQUIREJS */
       "define"     : false,
       /* MOCHA */

@@ -7,6 +7,9 @@
     function Mapster(element, opts) {
       this.gMap = new google.maps.Map(element, opts);
       this.markers = List.create();
+      if (opts.cluster) {
+        this.markerClusterer = new MarkerClusterer(this.gMap, [], opts.clusterer);
+      }
     }
 
     // Any functions that should be attached to all instances of the object are defined on the prototype
@@ -53,6 +56,9 @@
           lng: opts.lng
         };
         marker = this._createMarker(opts);
+        if (opts.cluster) {
+          this.markerClusterer.addMarker(marker);
+        }
         this.markers.add(marker);
         if (opts.event) {
           this._on({
