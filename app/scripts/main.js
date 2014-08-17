@@ -25,21 +25,18 @@
   var addMarkers = function() {
     map.addMarker({
       lat: 37.7916,
-      lng: -122.4357
+      lng: -122.4357,
+      content: '<div class="info-window">nice restaurant here</div>'
     });
-    map.addMarker({
+    var marker = map.addMarker({
       lat: 37.791350,
       lng: -122.435883,
       draggable: true,
       icon: 'images/giraffe.png',
       id: 'giraffe-1',
-      event: {
-        name: 'click',
-        callback: function() {
-          console.log('Custom map marker has been clicked!');
-        }
-      }
+      content: '<div class="info-window">Awesome zoo here</div>'
     });
+    console.log(map.markers);
   };
 
   var displayLatLong = function(latLng) {

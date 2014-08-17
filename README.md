@@ -52,7 +52,7 @@ Then reference the script with custom code to define and load a custom map
 
 For example, register handler for `dragend` event
 
-  ```
+  ```javascript
   var element = document.getElementById('map-canvas');
   var gMap = new google.maps.Map(element);
   google.maps.event.addListener(gMap, 'dragend', function(e) {
@@ -68,7 +68,7 @@ Custom map icons can be found [here](http://mapicons.nicolasmollet.com/)
 
 Draggable option can be true or false.
 
-  ```
+  ```javascript
   var element = document.getElementById('map-canvas');
   var gMap = new google.maps.Map(element);
   var marker = new google.maps.Marker({
@@ -88,3 +88,41 @@ Map markers can also have custom options.
 ## Marker Events
 
 Marker events are created in the same way as map events, except attached to the marker object rather than the map object.
+
+## Info Window
+
+To define an info window, just need to provide some content
+
+  ```javascript
+  var infoWindow = new google.maps.InfoWindow({
+    content: 'Hello this is some information'
+  });
+  ```
+
+Then attach the marker to the map, and provide a marker to center its position
+
+  ```javascript
+  infoWindow.open(map.gMap, marker);
+  ```
+
+This will make the info window open by default.
+If only want it to open when user clicks on the marker, need to setup an event on the marker.
+
+Content strings for info window can also have html, so they can be styled. For example
+
+  ```javascript
+  var infoWindow = new google.maps.InfoWindow({
+    content: '<div class="content">Hello this is some styled content</div>'
+  });
+  ```
+
+  ```css
+  .content {
+    color: red;
+  }
+
+## Keeping Track of Markers
+
+Googe Maps provides no native method for retrieving a collection of markers currently defined on the map,
+therefore, developers must write their own mechanism for keeping track of markers.
+

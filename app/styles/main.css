@@ -88,3 +88,13 @@ nav ul li:hover, .active {
   width: 75%;
   float: left;
 }
+
+/*
+*******************************
+* Map Markers
+*******************************
+*/
+
+.info-window {
+  color: red;
+}

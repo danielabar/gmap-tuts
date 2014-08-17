@@ -6,6 +6,7 @@
     // construction function
     function Mapster(element, opts) {
       this.gMap = new google.maps.Map(element, opts);
+      this.markers = [];
     }
 
     // Any functions that should be attached to all instances of the object are defined on the prototype
@@ -52,6 +53,7 @@
           lng: opts.lng
         };
         marker = this._createMarker(opts);
+        this._addMarker(marker);
         if (opts.event) {
           this._on({
             obj: marker,
@@ -59,6 +61,22 @@
             callback: opts.event.callback
           });
         }
+        if (opts.content) {
+          this._on({
+            obj: marker,
+            event: 'click',
+            callback: function() {
+              var infoWindow = new google.maps.InfoWindow({
+                content: opts.content
+              });
+              infoWindow.open(this.gMap, marker);
+            }
+          });
+        }
+        return marker;
+      },
+      _addMarker: function(marker) {
+        this.markers.push(marker);
       },
       _createMarker: function(opts) {
         opts.map = this.gMap;
