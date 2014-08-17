@@ -44,8 +44,47 @@ Then reference the script with custom code to define and load a custom map
   <script src="scripts/main.js"></script>
   ```
 
+## Map Options
+
+[Examples](app/scripts/map-options.js)
+
+## Map Events
+
+For example, register handler for `dragend` event
+
+  ```
+  var element = document.getElementById('map-canvas');
+  var gMap = new google.maps.Map(element);
+  google.maps.event.addListener(gMap, 'dragend', function(e) {
+    // do something
+  });
+  ```
+
 ## Map Markers
 
 Must provide a position, and a map to display on. Can also customize the icon by specifying a url to the icon image.
 
 Custom map icons can be found [here](http://mapicons.nicolasmollet.com/)
+
+Draggable option can be true or false.
+
+  ```
+  var element = document.getElementById('map-canvas');
+  var gMap = new google.maps.Map(element);
+  var marker = new google.maps.Marker({
+    position: {
+        lat: lat,
+        lng: lng
+      },
+      draggable: draggable,
+      map: gMap
+      icon: '/path/to/custom/icon',
+      visible: true
+    }
+  });
+
+Map markers can also have custom options.
+
+## Marker Events
+
+Marker events are created in the same way as map events, except attached to the marker object rather than the map object.

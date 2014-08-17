@@ -13,7 +13,7 @@
     map = mapster.create(element, options);
     map.zoom(INITIAL_ZOOM);
     map.registerHandler(displayLatLong);
-    map._on('dragend', function(e) {
+    map._onOriginal('dragend', function(e) {
       console.log('dragend');
       console.dir(e);
       console.dir(this);
@@ -23,8 +23,23 @@
   };
 
   var addMarkers = function() {
-    map.addMarker(37.7916 , -122.4357, false);
-    map.addMarker(37.791350, -122.435883, true, 'images/giraffe.png');
+    map.addMarker({
+      lat: 37.7916,
+      lng: -122.4357
+    });
+    map.addMarker({
+      lat: 37.791350,
+      lng: -122.435883,
+      draggable: true,
+      icon: 'images/giraffe.png',
+      id: 'giraffe-1',
+      event: {
+        name: 'click',
+        callback: function() {
+          console.log('Custom map marker has been clicked!');
+        }
+      }
+    });
   };
 
   var displayLatLong = function(latLng) {
