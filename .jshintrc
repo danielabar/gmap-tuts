@@ -21,6 +21,7 @@
     "jquery": true,
     "globals" : {
       "google"     : false,
+      "List"       : false,
       /* REQUIREJS */
       "define"     : false,
       /* MOCHA */

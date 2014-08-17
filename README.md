@@ -126,3 +126,16 @@ Content strings for info window can also have html, so they can be styled. For e
 Googe Maps provides no native method for retrieving a collection of markers currently defined on the map,
 therefore, developers must write their own mechanism for keeping track of markers.
 
+To remove a marker from a map, set its map property to null
+
+  ```javascript
+  marker.setMap(null);
+  ```
+
+_A marker is assigned to a map, whereas a map is not assigned a marker._
+
+## Advanced Marker Organization
+
+Separate out marker organization logic from core map functions, _single responsibility prinicple_.
+
+For this project, the [List](app/scripts/List.js) module is created to manage any collection, including map markers.

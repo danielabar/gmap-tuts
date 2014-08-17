@@ -20,23 +20,53 @@
     });
     updateInfo(map);
     addMarkers();
+    addRandomMarkers();
   };
 
   var addMarkers = function() {
-    map.addMarker({
+    var marker1 = map.addMarker({
+      id: 'marker-1',
       lat: 37.7916,
       lng: -122.4357,
       content: '<div class="info-window">nice restaurant here</div>'
     });
-    var marker = map.addMarker({
+    var marker2 = map.addMarker({
+      id: 'marker-2',
       lat: 37.791350,
       lng: -122.435883,
       draggable: true,
       icon: 'images/giraffe.png',
-      id: 'giraffe-1',
       content: '<div class="info-window">Awesome zoo here</div>'
     });
-    console.log(map.markers);
+
+    // test remove a marker
+    // map._removeMarker(marker1);
+    // console.log(map.markers);
+
+    // test find marker by lat
+    // console.log(map.findMarkerByLat(37.7916));
+
+    // test new list management
+    // console.log(map.markers);
+    // var found = map.findBy(function(marker) {
+    //   return marker.id === 'marker-1';
+    // });
+    // console.log(found);
+    // map.removeBy(function(marker) {
+    //   return marker.id === 'marker-2';
+    // });
+  };
+
+  var addRandomMarkers = function() {
+    for (var i = 0; i < 40; i++) {
+      map.addMarker({
+        id: 'marker-' + 1,
+        lat: 37.781350 + Math.random(),
+        lng: -122.485883 + Math.random(),
+        content: 'I love cats',
+        icon: 'images/cat.png'
+      });
+    }
   };
 
   var displayLatLong = function(latLng) {
