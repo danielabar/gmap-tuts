@@ -7,12 +7,10 @@
     function Mapster(element, opts) {
       this.gMap = new google.maps.Map(element, opts);
       this.markers = List.create();
-      this.markerClusterer = new MarkerClusterer(this.gMap, []);
-      // if (opts.cluster) {
-      //   console.log('cluster is true');
-      //   // this.markerClusterer = new MarkerClusterer(this.gMap, [], opts.clusterer);
-      //   this.markerClusterer = new MarkerClusterer(this.gMap, []);
-      // }
+      // this.markerClusterer = new MarkerClusterer(this.gMap, []);
+      if (opts.cluster) {
+        this.markerClusterer = new MarkerClusterer(this.gMap, [], opts.clusterer);
+      }
     }
 
     // Any functions that should be attached to all instances of the object are defined on the prototype
@@ -59,10 +57,10 @@
           lng: opts.lng
         };
         marker = this._createMarker(opts);
-        // if (opts.cluster) {
-        //   this.markerClusterer.addMarker(marker);
-        // }
-        this.markerClusterer.addMarker(marker);
+        if (this.markerClusterer) {
+          this.markerClusterer.addMarker(marker);
+        }
+        // this.markerClusterer.addMarker(marker);
         this.markers.add(marker);
         if (opts.event) {
           this._on({
@@ -89,9 +87,14 @@
         return this.markers.find(callback);
       },
       removeBy: function(callback) {
-        this.markers.find(callback, function(markers) {
+        var self = this;
+        self.markers.find(callback, function(markers) {
           markers.forEach(function(marker) {
-            marker.setMap(null);
+            if (self.markerClusterer) {
+              self.markerClusterer.removeMarker(marker);
+            } else {
+              marker.setMap(null);
+            }
           });
         });
       },

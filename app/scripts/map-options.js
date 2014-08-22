@@ -19,8 +19,17 @@
     panControlOptions: {
       position: google.maps.ControlPosition.TOP_LEFT
     },
+    // These options are not taking effect
     cluster: {
-
+      options: {
+        styles: [{
+          url: 'http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m4.png',
+          height: 56,
+          width: 55,
+          textColor: '#F00',
+          textSize: 18
+        }]
+      }
     }
   };
 

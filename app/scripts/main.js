@@ -59,14 +59,14 @@
 
   var addRandomMarkers = function() {
     for (var i = 0; i < 40; i++) {
-      map.addMarker(createRandomMarker('Cat people live here', 'images/cat.png'));
-      map.addMarker(createRandomMarker('Dog people live here', 'images/dog.png'));
+      map.addMarker(createRandomMarker(i, 'Cat people live here', 'images/cat.png'));
+      map.addMarker(createRandomMarker(i, 'Dog people live here', 'images/dog.png'));
     }
   };
 
-  var createRandomMarker = function(content, icon) {
+  var createRandomMarker = function(id, content, icon) {
     return {
-        id: 'marker-' + 1,
+        id: 'marker-' + id,
         lat: 37.781350 + Math.random(),
         lng: -122.485883 + Math.random(),
         content: content,
