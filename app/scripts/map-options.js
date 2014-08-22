@@ -18,6 +18,9 @@
     },
     panControlOptions: {
       position: google.maps.ControlPosition.TOP_LEFT
+    },
+    cluster: {
+
     }
   };
 
