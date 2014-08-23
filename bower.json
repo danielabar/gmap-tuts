@@ -2,7 +2,8 @@
   "name": "gmap-tuts",
   "private": true,
   "dependencies": {
-    "jquery": "~1.11.0"
+    "jquery": "~1.11.0",
+    "jqueryui": "~1.11.1"
   },
   "devDependencies": {}
 }

@@ -22,6 +22,7 @@
     "globals" : {
       "alert"      : false,
       "google"     : false,
+      "Mapster"    : false,
       "List"       : false,
       "MarkerClusterer": false,
       /* REQUIREJS */
