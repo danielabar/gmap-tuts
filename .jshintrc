@@ -20,6 +20,7 @@
     "smarttabs": true,
     "jquery": true,
     "globals" : {
+      "alert"      : false,
       "google"     : false,
       "List"       : false,
       "MarkerClusterer": false,

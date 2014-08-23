@@ -36,7 +36,25 @@
       lng: -122.435883,
       draggable: true,
       icon: 'images/giraffe.png',
-      content: '<div class="info-window">Awesome zoo here</div>'
+      content: '<div class="info-window">Awesome zoo here</div>',
+      events: [
+        {
+          name: 'click',
+          callback: function(e, marker) {
+            alert('clicked: see console for event and marker');
+            console.dir(e);
+            console.dir(marker);
+          }
+        },
+        {
+          name: 'dragend',
+          callback: function(e, marker) {
+            alert('dragend: see console for event and marker');
+            console.dir(e);
+            console.dir(marker);
+          }
+        }
+      ]
     });
 
     // test remove a marker

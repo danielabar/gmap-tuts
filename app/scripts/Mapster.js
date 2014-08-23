@@ -7,7 +7,6 @@
     function Mapster(element, opts) {
       this.gMap = new google.maps.Map(element, opts);
       this.markers = List.create();
-      // this.markerClusterer = new MarkerClusterer(this.gMap, []);
       if (opts.cluster) {
         this.markerClusterer = new MarkerClusterer(this.gMap, [], opts.clusterer);
       }
@@ -15,11 +14,13 @@
 
     // Any functions that should be attached to all instances of the object are defined on the prototype
     Mapster.prototype = {
+
       setOpts: function(opts) {
         if (opts) {
           this.gMap.setOptions(opts);
         }
       },
+
       zoom: function(level) {
         if (level) {
           this.gMap.setZoom(level);
@@ -27,6 +28,7 @@
           return this.gMap.getZoom();
         }
       },
+
       // My attempt at click handler
       registerHandler: function(callback) {
         google.maps.event.addListener(this.gMap, 'click', function(e) {
@@ -36,21 +38,25 @@
           });
         });
       },
+
       // Course solution for event handling
       // By convention, underscore means private
       _on: function(opts) {
         var self = this;
         google.maps.event.addListener(opts.obj, opts.event, function(e) {
-          opts.callback.call(self, e);
+          opts.callback.call(self, e, opts.obj);
         });
       },
+
       _onOriginal: function(event, callback) {
         var self = this;
         google.maps.event.addListener(this.gMap, event, function(e) {
           callback.call(self, e);
         });
       },
+
       addMarker: function(opts) {
+        var self = this;
         var marker;
         opts.position = {
           lat: opts.lat,
@@ -60,14 +66,9 @@
         if (this.markerClusterer) {
           this.markerClusterer.addMarker(marker);
         }
-        // this.markerClusterer.addMarker(marker);
         this.markers.add(marker);
-        if (opts.event) {
-          this._on({
-            obj: marker,
-            event: opts.event.name,
-            callback: opts.event.callback
-          });
+        if (opts.events) {
+          this._attachEvents(marker, opts.events);
         }
         if (opts.content) {
           this._on({
@@ -83,9 +84,22 @@
         }
         return marker;
       },
+
+      _attachEvents: function(obj, events) {
+        var self = this;
+        events.forEach(function(evt) {
+          self._on({
+            obj: obj,
+            event: evt.name,
+            callback: evt.callback
+          });
+        });
+      },
+
       findBy: function(callback) {
         return this.markers.find(callback);
       },
+
       removeBy: function(callback) {
         var self = this;
         self.markers.find(callback, function(markers) {
@@ -98,6 +112,7 @@
           });
         });
       },
+
       _createMarker: function(opts) {
         opts.map = this.gMap;
         return new google.maps.Marker(opts);
