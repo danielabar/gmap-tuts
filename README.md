@@ -167,3 +167,4 @@ Cluster color can be modified to reflect density.
 Build a jQuery UI [Widget](http://jqueryui.com/widget/) to make working with map library easier.
 
 [Code](app/scripts/jqueryui.mapster.js) | [Usage](app/scripts/main2.js)
+
