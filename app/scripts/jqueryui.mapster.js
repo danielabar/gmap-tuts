@@ -28,7 +28,19 @@
 
     removeMarkers: function(callback) {
       this.map.removeBy(callback);
-    }
+    },
+
+    markers: function() {
+      return this.map.markers.items;
+    },
+
+    setPano: function(selector, opts) {
+      var self = this;
+      var elements = $(selector);
+      $.each(elements, function(key, element) {
+        self.map.setPano(element, opts);
+      });
+    },
 
     // events bound via _on are removed automatically, revert other modifications here
     _destroy: function() {

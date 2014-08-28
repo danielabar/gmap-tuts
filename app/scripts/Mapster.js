@@ -48,6 +48,11 @@
         });
       },
 
+      setPano: function(element, opts) {
+        var panorama = new google.maps.StreetViewPanorama(element, opts);
+        this.gMap.setStreetView(panorama); // connect a "pegman" on map to the streetview
+      },
+
       _onOriginal: function(event, callback) {
         var self = this;
         google.maps.event.addListener(this.gMap, event, function(e) {

@@ -83,11 +83,17 @@ nav ul li:hover, .active {
 *******************************
 */
 
-#map-canvas {
+.mapcol {
   height: 100%;
   width: 75%;
   float: left;
 }
+
+.mapwidget {
+  height: 100%;
+  width: 100%;
+}
+
 
 /*
 *******************************
@@ -97,4 +103,20 @@ nav ul li:hover, .active {
 
 .info-window {
   color: red;
+}
+
+
+/*
+*******************************
+* Street View
+*******************************
+*/
+
+#pip-pano {
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
