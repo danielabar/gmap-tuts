@@ -50,6 +50,9 @@
 
       setPano: function(element, opts) {
         var panorama = new google.maps.StreetViewPanorama(element, opts);
+        if (opts.events) {
+          this._attachEvents(panorama, opts.events);
+        }
         this.gMap.setStreetView(panorama); // connect a "pegman" on map to the streetview
       },
 

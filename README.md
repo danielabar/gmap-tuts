@@ -167,3 +167,14 @@ Cluster color can be modified to reflect density.
 Build a jQuery UI [Widget](http://jqueryui.com/widget/) to make working with map library easier.
 
 [Code](app/scripts/jqueryui.mapster.js) | [Usage](app/scripts/main2.js)
+
+## Street View Panorama
+
+`pov` is point of view. Consists of `heading` to specify number of degrees to the right,
+and `pitch` to specify number of degrees up (positive) or down (negative).
+
+### Events
+
+* position_changed
+* pov_chnaged
+* links_changed (fires whenever street is changed)
