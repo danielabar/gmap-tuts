@@ -70,7 +70,22 @@
   // HTML5 Geolocation
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      console.dir(position);
+      $mapster.mapster('addMarker', {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      });
+      $mapster.mapster('setLocation', {
+        center: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+      });
+      $mapster.mapster('setPano', '#pip-pano', {
+        position: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+      });
     });
   }
 

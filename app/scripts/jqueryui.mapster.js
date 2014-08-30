@@ -22,6 +22,11 @@
       return this.map.addMarker(opts);
     },
 
+    setLocation: function(center) {
+      var options = $.extend({}, mapster.DEFAULT_OPTIONS, center);
+      this.map.setOpts(options);
+    },
+
     // Add marker onto the map by geocode
     addMarkerGeo: function(opts) {
       var self = this;
