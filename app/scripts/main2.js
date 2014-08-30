@@ -68,25 +68,43 @@
   });
 
   // HTML5 Geolocation
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      $mapster.mapster('addMarker', {
+  $mapster.mapster('getCurrentPosition', function(position) {
+    $mapster.mapster('addMarker', {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    });
+    $mapster.mapster('setLocation', {
+      center: {
         lat: position.coords.latitude,
         lng: position.coords.longitude
-      });
-      $mapster.mapster('setLocation', {
-        center: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        }
-      });
-      $mapster.mapster('setPano', '#pip-pano', {
-        position: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        }
-      });
+      }
     });
-  }
+    $mapster.mapster('setPano', '#pip-pano', {
+      position: {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }
+    });
+  });
+  // if (navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(function(position) {
+  //     $mapster.mapster('addMarker', {
+  //       lat: position.coords.latitude,
+  //       lng: position.coords.longitude
+  //     });
+  //     $mapster.mapster('setLocation', {
+  //       center: {
+  //         lat: position.coords.latitude,
+  //         lng: position.coords.longitude
+  //       }
+  //     });
+  //     $mapster.mapster('setPano', '#pip-pano', {
+  //       position: {
+  //         lat: position.coords.latitude,
+  //         lng: position.coords.longitude
+  //       }
+  //     });
+  //   });
+  // }
 
 })(window, jQuery);

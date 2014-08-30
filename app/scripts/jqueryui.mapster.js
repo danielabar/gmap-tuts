@@ -39,14 +39,6 @@
             /*jshint camelcase: false */
             opts.content = result.formatted_address;
             self.map.addMarker(opts);
-            // if (opts.panoSelector) {
-            //   self.setPano(opts.panoSelector, {
-            //     position: {
-            //       lat: opts.lat,
-            //       lng: opts.lng
-            //     }
-            //   });
-            // }
           });
         },
         error: function(status) {
@@ -65,6 +57,10 @@
 
     markers: function() {
       return this.map.markers.items;
+    },
+
+    getCurrentPosition: function(callback) {
+      this.map.getCurrentPosition(callback);
     },
 
     setPano: function(selector, opts) {
