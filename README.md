@@ -178,3 +178,9 @@ and `pitch` to specify number of degrees up (positive) or down (negative).
 * position_changed
 * pov_chnaged
 * links_changed (fires whenever street is changed)
+
+## Geocoding
+
+Converting address to geographic co-ordinates (lat/lng).
+
+Google geocoder function is asynchronous, therefore must provide callbacks for success and error handling.

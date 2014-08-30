@@ -30,7 +30,8 @@
           textSize: 18
         }]
       }
-    }
+    },
+    geocoder: true
   };
 
   mapster.DISABLE_DEFAULT_UI = {

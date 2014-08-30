@@ -17,9 +17,30 @@
 
     },
 
-    // Add a marker onto the map
+    // Add a marker onto the map by lat and lng
     addMarker: function(opts) {
       return this.map.addMarker(opts);
+    },
+
+    // Add marker onto the map by geocode
+    addMarkerGeo: function(opts) {
+      var self = this;
+      this.map.geocode({
+        address: opts.location,
+        success: function(results) {
+          results.forEach(function(result) {
+            console.dir(result);
+            opts.lat = result.geometry.location.lat();
+            opts.lng = result.geometry.location.lng();
+            /*jshint camelcase: false */
+            opts.content = result.formatted_address;
+            self.map.addMarker(opts);
+          });
+        },
+        error: function(status) {
+
+        }
+      });
     },
 
     findMarkers: function(callback) {
