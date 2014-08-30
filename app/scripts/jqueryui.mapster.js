@@ -29,12 +29,19 @@
         address: opts.location,
         success: function(results) {
           results.forEach(function(result) {
-            console.dir(result);
             opts.lat = result.geometry.location.lat();
             opts.lng = result.geometry.location.lng();
             /*jshint camelcase: false */
             opts.content = result.formatted_address;
             self.map.addMarker(opts);
+            // if (opts.panoSelector) {
+            //   self.setPano(opts.panoSelector, {
+            //     position: {
+            //       lat: opts.lat,
+            //       lng: opts.lng
+            //     }
+            //   });
+            // }
           });
         },
         error: function(status) {

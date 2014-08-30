@@ -51,35 +51,27 @@
 
   // Will find all the '1111 Main Street' and mark them on map
   $mapster.mapster('addMarkerGeo', {
-    location: '1111 Main Street'
+    location: '1111 Main Street',
+    events: [
+      {
+        name: 'click',
+        callback: function(e) {
+          $mapster.mapster('setPano', '#pip-pano', {
+            position: {
+              lat: e.latLng.lat(),
+              lng: e.latLng.lng()
+            }
+          });
+        }
+      }
+    ]
   });
 
-  // results is array of places returned from geocode search
-  // each place has a location, providing its lat and lng
-  // var geocode = function(opts) {
-  //   geocoder.geocode({
-  //     address: opts.address
-  //   }, function(results, status) {
-  //     if (status === google.maps.GeocoderStatus.OK) {
-  //       opts.success.call(this, results);
-  //     } else {
-  //       opts.error.call(this, status);
-  //     }
-  //   });
-  // };
-
-  // geocode({
-  //   address: 'Golden Gate Bridge, San Francisco, CA',
-  //   success: function(results) {
-  //     $mapster.mapster('addMarker', {
-  //       lat: results[0].geometry.location.lat(),
-  //       lng: results[0].geometry.location.lng()
-  //     });
-  //   },
-  //   error: function(status) {
-  //     console.error(status);
-  //   }
-  // });
-
+  // HTML5 Geolocation
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.dir(position);
+    });
+  }
 
 })(window, jQuery);
