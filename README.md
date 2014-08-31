@@ -82,6 +82,7 @@ Draggable option can be true or false.
       visible: true
     }
   });
+  ```
 
 Map markers can also have custom options.
 
@@ -184,3 +185,11 @@ and `pitch` to specify number of degrees up (positive) or down (negative).
 Converting address to geographic co-ordinates (lat/lng).
 
 Google geocoder function is asynchronous, therefore must provide callbacks for success and error handling.
+
+## Custom Styles
+
+[Docs](https://developers.google.com/maps/documentation/javascript/styling#style_syntax) | [Reference](https://developers.google.com/maps/documentation/javascript/reference)
+
+Can change colors of components on map.
+
+Define an array of objects, and set that as the map style.

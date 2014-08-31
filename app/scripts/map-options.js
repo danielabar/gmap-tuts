@@ -1,5 +1,35 @@
 (function(window, google, mapster) {
 
+  var styles = [{
+      featureType: 'all',
+      elementType: 'labels',
+      stylers: [{ visibility: 'off' } ]
+    }, {
+      featureType: 'water',
+      elementType: 'geometry',
+      stylers: [{ color: '#3498db' } ]
+    }, {
+      featureType: 'landscape',
+      elementType: 'geometry',
+      stylers: [{ color: '#27ae60' } ]
+    }, {
+      featureType: 'poi',
+      elementType: 'geometry',
+      stylers: [{ color: '#27ae60' } ]
+    }, {
+      featureType: 'transit',
+      elementType: 'geometry',
+      stylers: [{ color: '#27ae60' } ]
+    }, {
+      featureType: 'road.highway',
+      elementType: 'geometry',
+      stylers: [{ color: '#34495e' } ]
+    }, {
+      featureType: 'road.arterial',
+      elementType: 'geometry',
+      stylers: [{ color: '#ecf0f1' } ]
+    } ];
+
   mapster.DEFAULT_OPTIONS = {
     zoom: 10,
     minZoom: null,
@@ -31,7 +61,8 @@
         }]
       }
     },
-    geocoder: true
+    geocoder: true,
+    styles: styles
   };
 
   mapster.DISABLE_DEFAULT_UI = {
