@@ -27,6 +27,11 @@
       this.map.setOpts(options);
     },
 
+    setCustomStyles: function() {
+      var options = $.extend({}, mapster.DEFAULT_OPTIONS, {styles: mapster.CUSTOM_STYLES});
+      this.map.setOpts(options);
+    },
+
     // Add marker onto the map by geocode
     addMarkerGeo: function(opts) {
       var self = this;

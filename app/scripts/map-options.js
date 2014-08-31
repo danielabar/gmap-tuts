@@ -1,6 +1,6 @@
 (function(window, google, mapster) {
 
-  var styles = [{
+  mapster.CUSTOM_STYLES = [{
       featureType: 'all',
       elementType: 'labels',
       stylers: [{ visibility: 'off' } ]
@@ -61,8 +61,7 @@
         }]
       }
     },
-    geocoder: true,
-    styles: styles
+    geocoder: true
   };
 
   mapster.DISABLE_DEFAULT_UI = {

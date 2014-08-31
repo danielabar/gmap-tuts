@@ -1,7 +1,8 @@
 (function(window, $) {
 
   var $mapster = $('#map-canvas').mapster(Mapster.DEFAULT_OPTIONS);
-  // var geocoder = new google.maps.Geocoder();
+
+  $mapster.mapster('setCustomStyles', {});
 
   // Marker by geographic co-ordinates
   $mapster.mapster('addMarker', {

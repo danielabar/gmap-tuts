@@ -190,7 +190,10 @@ module.exports = function (grunt) {
             options: {
                 dest: '<%= config.dist %>'
             },
-            html: '<%= config.app %>/index.html'
+            html: [
+              '<%= config.app %>/index.html',
+              '<%= config.app %>/index2.html'
+            ]
         },
 
         // Performs rewrites based on rev and the useminPrepare configuration
